@@ -282,7 +282,7 @@
     <div style="display:flex;flex-direction:column;justify-content:flex-end;align-self:stretch;">
       <span style="font-size:.78rem;font-weight:700;color:#FFFFFF;letter-spacing:.2px;">dr. Daryo Soemitro, Sp.BS, FCHMC</span>
       <span style="font-size:.66rem;color:rgba(255,255,255,.75);margin-top:3px;">Digital Health Transformation Advisor &nbsp;|&nbsp; IKKESINDO</span>
-      <span style="font-size:.58rem;color:#E8952A;margin-top:4px;font-weight:700;letter-spacing:.6px;">V.28062026</span>
+      <span style="font-size:.58rem;color:#E8952A;margin-top:4px;font-weight:700;letter-spacing:.6px;">V.28062026.01</span>
     </div>
   </div>
 <h1 style="font-size:1.35rem;">🏥 Di Balik Checklist Direksi: Peta Regulasi SIMRS</h1>
@@ -924,7 +924,7 @@ const DOCS = [
  kmk:["KMK 1596/2024 Std PMKP 5","KMK 1596/2024 Std TKRS 4"],
  regulasiLain:["PerMenKes 30/2022 (12 INMU)","WHO Hospital Management Dashboard Framework","JCI Leadership Chapter — daily reporting"],
  turunan:[],payung:["ST-10","SP-04","T-09","PD-06","PD-07"],
- gap:"KRITIS: Ini adalah OUTPUT AKHIR dari seluruh rantai regulasi. Semua formulir F-01 s.d. F-17 adalah feeder F-15. Jika satu feeder kosong, F-15 tidak valid",kritis:true},
+ gap:"KRITIS: Ini adalah OUTPUT AKHIR dari seluruh rantai regulasi. Semua formulir F-01 s.d. F-20 adalah feeder F-15. Jika satu feeder kosong, F-15 tidak valid",kritis:true},
 {id:"F-16", layer:"Formulir", nama:"Formulir Laporan Kunjungan Rawat Jalan Harian",
  domain:"Pelayanan",indikator:["Kunjungan rawat jalan harian","Produktivitas poliklinik"],
  dataFields:["Total kunjungan per poliklinik","Kunjungan baru vs lama","Kunjungan BPJS vs umum","Waktu tunggu rata-rata","Dokter yang praktik"],
@@ -944,6 +944,45 @@ const DOCS = [
  regulasiLain:["PMK 76/2016 (SPM RS — efisiensi)","PSAK 1 (Penyajian Laporan Keuangan)","PMK 6/2026 Psl 71-72 (Pola Tarif Nasional RS — menggantikan PMK 85/2015)"],
  turunan:[],payung:["ST-03","PD-08","T-10"],
  gap:"Field: biaya operasional, SDM, logistik, utilitas, rasio pendapatan/biaya. Validasi oleh keuangan sebelum ke Direktur",kritis:false},
+
+{id:"F-18", layer:"Formulir", nama:"Formulir Monitoring Klaim BPJS & Pending Claim",
+ domain:"Keuangan",
+ indikator:["Pending claim BPJS harian","Nilai klaim terverifikasi","Aging piutang BPJS"],
+ dataFields:["Jumlah klaim pending (berkas)","Nilai klaim pending (Rp)","Klaim rejected hari ini","Klaim terverifikasi hari ini","Aging > 30 hari","Aging > 60 hari","PIC verifikasi"],
+ starkes:["TKRS 3 EP 1-2","TKRS 4 EP 1"],
+ pmk6:["PMK 6/2026 Psl 70 (pendanaan RS)","PMK 6/2026 Psl 73 (laporan keuangan)","PMK 6/2026 Psl 74 (pencatatan dalam SIMRS)"],
+ kmk:["KMK 1596/2024 Std TKRS 3"],
+ regulasiLain:["Perpres 82/2018 (JKN — klaim BPJS)","PMK 6/2026 Psl 71 (tarif & klaim RS)","PSAK 23 (Pengakuan Pendapatan)"],
+ turunan:[],payung:["ST-03","PD-08","T-10"],
+ panduan:"Hanya mengatur monitoring klaim BPJS harian. Field wajib: jumlah & nilai klaim pending, klaim rejected, klaim terverifikasi, aging > 30 & > 60 hari. Pending claim adalah indikator likuiditas kritis bagi RS dengan >60% pasien BPJS. Acuan: Perpres 82/2018 (JKN), PMK 6/2026 Psl 70-73.",
+ gap:"Field: jumlah & nilai klaim pending per hari, aging > 30 hari dan > 60 hari, klaim rejected. Validasi bagian klaim sebelum pk.14.00.",
+ kritis:false},
+
+{id:"F-19", layer:"Formulir", nama:"Formulir SDM Operasional Harian (Ketersediaan & Absensi)",
+ domain:"SDM",
+ indikator:["Ketersediaan SDM kritis per shift","Absensi harian","Produktivitas per tenaga"],
+ dataFields:["Dokter jaga hadir/tidak hadir per shift","Rasio perawat:TT per unit","Absensi tidak terencana (sakit/izin)","Tenaga kritis on-call aktif","Produktivitas: jumlah pasien per dokter","Unit dengan SDM di bawah standar"],
+ starkes:["KPS 4 EP 1-2","KPS 14 EP 1-2","TKRS 3 EP 1"],
+ pmk6:["PMK 6/2026 Psl 44 huruf d (kewajiban tenaga kesehatan)","PMK 6/2026 Psl 36 huruf q (daftar tenaga medis)","PMK 6/2026 Psl 74 (pencatatan dalam SIMRS)"],
+ kmk:["KMK 1596/2024 Std KPS 4"],
+ regulasiLain:["PMK 129/2008 (SPM RS — rasio tenaga)","UU 13/2003 (Ketenagakerjaan)","KMK 1778/2010 (Pedoman ICU — rasio perawat:TT)","PP 28/2024 (Pelaksanaan UU Kesehatan)"],
+ turunan:[],payung:["ST-08","T-01","PD-02"],
+ panduan:"Mengintegrasikan absensi harian dan ketersediaan SDM kritis. Field wajib: dokter jaga hadir/tidak per shift, rasio perawat:TT per unit (min 1:2 ICU), absensi tidak terencana, tenaga on-call aktif, unit yang SDM-nya di bawah standar. Ini prasyarat checklist poin 1 Serial #6 — kekurangan dokter jaga malam. Acuan: STARKES KPS 4, PMK 6/2026 Psl 44.",
+ gap:"Rasio perawat:TT per unit per shift, dokter jaga hadir/tidak, absensi tidak terencana. Input sebelum pk.13.00.",
+ kritis:false},
+
+{id:"F-20", layer:"Formulir", nama:"Formulir Logistik & BMHP Kritis Harian",
+ domain:"Logistik",
+ indikator:["Stok BMHP kritis","Logistik operasional","Status pengadaan darurat"],
+ dataFields:["Stok BMHP per item kritis (perban, infus set, kateter, sarung tangan, masker)","BMHP alert merah (< reorder point)","Status pengadaan darurat aktif","Estimasi kebutuhan 3 hari ke depan","PIC logistik yang memvalidasi"],
+ starkes:["PKPO 3 EP 1-2","MFK 5 EP 1","TKRS 3 EP 1"],
+ pmk6:["PMK 6/2026 Psl 13 huruf e (perbekalan farmasi & BMHP)","PMK 6/2026 Psl 36 huruf b (sarana & prasarana)","PMK 6/2026 Psl 74 (pencatatan dalam SIMRS)"],
+ kmk:["KMK 1596/2024 Std PKPO 3"],
+ regulasiLain:["PMK 72/2016 (Standar Pelayanan Kefarmasian RS — pengelolaan BMHP)","PP 28/2024 Psl 146 (pengelolaan perbekalan kesehatan)","Perpres 16/2018 (Pengadaan Barang/Jasa — darurat)"],
+ turunan:[],payung:["SP-05","PD-05","T-04"],
+ panduan:"Melengkapi F-12 (stok obat kritis) dengan domain BMHP dan logistik umum. Field wajib: stok BMHP per item kritis, status alert traffic light (hijau/kuning/merah), pengadaan darurat aktif, estimasi kebutuhan 3 hari. Alert merah = laporan langsung ke Direktur via SP-05. Acuan: PMK 72/2016, STARKES PKPO 3.",
+ gap:"Stok BMHP per item dengan traffic light alert, status pengadaan darurat aktif. Divalidasi logistik sebelum pk.14.00.",
+ kritis:false}
 ];
 
 // ── INDEX ──
